@@ -1,0 +1,88 @@
+# ReviewScoresInputDto
+
+**Properties**
+
+| Name         | Type                         | Required | Description                                                                                                                                    |
+| :----------- | :--------------------------- | :------- | :--------------------------------------------------------------------------------------------------------------------------------------------- |
+| hotelIds     | number[]                     | ✅       | List of hotel ids for which review score information should be displayed.                                                                      |
+| affiliateId  | number                       | ❌       | Can be used to specify the affiliate id that should be used instead of the default one.                                                        |
+| language     | ReviewScoresInputDtoLanguage | ❌       | Code of the language used to render response. Please check the "Possible Values" section of the documentation for the accepted language codes. |
+| reviewerType | ReviewerType                 | ❌       | Limits reviews to those written by specific reviewer type.                                                                                     |
+
+# ReviewScoresInputDtoLanguage
+
+Code of the language used to render response. Please check the "Possible Values" section of the documentation for the accepted language codes.
+
+**Properties**
+
+| Name  | Type   | Required | Description |
+| :---- | :----- | :------- | :---------- |
+| AR    | string | ✅       | "AR"        |
+| BG    | string | ✅       | "BG"        |
+| CA    | string | ✅       | "CA"        |
+| CS    | string | ✅       | "CS"        |
+| DA    | string | ✅       | "DA"        |
+| DE    | string | ✅       | "DE"        |
+| EL    | string | ✅       | "EL"        |
+| EN    | string | ✅       | "EN"        |
+| EN_GB | string | ✅       | "EN_GB"     |
+| EN_US | string | ✅       | "EN_US"     |
+| ES    | string | ✅       | "ES"        |
+| ES_AR | string | ✅       | "ES_AR"     |
+| ES_MX | string | ✅       | "ES_MX"     |
+| ET    | string | ✅       | "ET"        |
+| FI    | string | ✅       | "FI"        |
+| FR    | string | ✅       | "FR"        |
+| HE    | string | ✅       | "HE"        |
+| HI    | string | ✅       | "HI"        |
+| HR    | string | ✅       | "HR"        |
+| HU    | string | ✅       | "HU"        |
+| ID    | string | ✅       | "ID"        |
+| IS    | string | ✅       | "IS"        |
+| IT    | string | ✅       | "IT"        |
+| JA    | string | ✅       | "JA"        |
+| KA    | string | ✅       | "KA"        |
+| KO    | string | ✅       | "KO"        |
+| LT    | string | ✅       | "LT"        |
+| LV    | string | ✅       | "LV"        |
+| MS    | string | ✅       | "MS"        |
+| NL    | string | ✅       | "NL"        |
+| NO    | string | ✅       | "NO"        |
+| PL    | string | ✅       | "PL"        |
+| PT_BR | string | ✅       | "PT_BR"     |
+| PT_PT | string | ✅       | "PT_PT"     |
+| RO    | string | ✅       | "RO"        |
+| RU    | string | ✅       | "RU"        |
+| SK    | string | ✅       | "SK"        |
+| SL    | string | ✅       | "SL"        |
+| SR    | string | ✅       | "SR"        |
+| SV    | string | ✅       | "SV"        |
+| TH    | string | ✅       | "TH"        |
+| TL    | string | ✅       | "TL"        |
+| TR    | string | ✅       | "TR"        |
+| UK    | string | ✅       | "UK"        |
+| VI    | string | ✅       | "VI"        |
+| ZH_CN | string | ✅       | "ZH_CN"     |
+| ZH_TW | string | ✅       | "ZH_TW"     |
+
+# ReviewerType
+
+Limits reviews to those written by specific reviewer type.
+
+**Properties**
+
+| Name                                | Type   | Required | Description                           |
+| :---------------------------------- | :----- | :------- | :------------------------------------ |
+| SOLO_TRAVELLER                      | string | ✅       | "SOLO_TRAVELLER"                      |
+| YOUNG_COUPLE                        | string | ✅       | "YOUNG_COUPLE"                        |
+| MATURE_COUPLE                       | string | ✅       | "MATURE_COUPLE"                       |
+| FAMILY_WITH_YOUNG_CHILDREN          | string | ✅       | "FAMILY_WITH_YOUNG_CHILDREN"          |
+| FAMILY_WITH_OLDER_CHILDREN          | string | ✅       | "FAMILY_WITH_OLDER_CHILDREN"          |
+| WITH_FRIENDS                        | string | ✅       | "WITH_FRIENDS"                        |
+| GROUP                               | string | ✅       | "GROUP"                               |
+| REVIEW_CATEGORY_COUPLES             | string | ✅       | "REVIEW_CATEGORY_COUPLES"             |
+| REVIEW_CATEGORY_FAMILIES            | string | ✅       | "REVIEW_CATEGORY_FAMILIES"            |
+| REVIEW_CATEGORY_GROUP_OF_FRIENDS    | string | ✅       | "REVIEW_CATEGORY_GROUP_OF_FRIENDS"    |
+| REVIEW_CATEGORY_BUSINESS_TRAVELLERS | string | ✅       | "REVIEW_CATEGORY_BUSINESS_TRAVELLERS" |
+
+<!-- This file was generated by liblab | https://liblab.com/ -->
