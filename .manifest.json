@@ -1,8 +1,8 @@
 {
-  "liblabVersion": "2.1.19",
-  "date": "2024-07-18T16:48:10.123Z",
+  "liblabVersion": "2.1.20",
+  "date": "2024-07-18T20:46:39.710Z",
   "config": {
-    "apiId": 377,
+    "apiId": 412,
     "sdkName": "booking_client",
     "sdkVersion": "1.0.0",
     "liblabVersion": "2",
@@ -58,8 +58,8 @@
       "httpMethodsToRetry": ["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD", "OPTIONS"]
     },
     "multiTenant": true,
-    "specUrl": "https://dev-liblab-api-stack-specs.s3.us-east-1.amazonaws.com/377/open-api-spec.yaml?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA3C2RXH7MWUCMN7ON%2F20240718%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240718T164808Z&X-Amz-Expires=43200&X-Amz-Signature=6abcbe8592a5cfe10bc04141a0b16b168d79d2b813cf00ff2752c33a7681c07f&X-Amz-SignedHeaders=host&x-id=GetObject",
-    "includeWatermark": false,
+    "specUrl": "https://dev-liblab-api-stack-specs.s3.us-east-1.amazonaws.com/412/open-api-spec.yaml?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA3C2RXH7MWUCMN7ON%2F20240718%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240718T204631Z&X-Amz-Expires=43200&X-Amz-Signature=ceb927c9e09abbb63a8e2890818303a6d141db1da24066a55ff2fa4b048a918e&X-Amz-SignedHeaders=host&x-id=GetObject",
+    "includeWatermark": true,
     "language": "typescript",
     "deliveryMethod": "zip",
     "hooks": {
