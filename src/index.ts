@@ -3,7 +3,7 @@ import { SdkConfig } from './http/types';
 import { DemandApiV3CompatibleService } from './services/demand-api-v3-compatible';
 import { DemandApiV2CompatibleService } from './services/demand-api-v2-compatible';
 
-export class Booking {
+export class BookingClient {
   public readonly demandApiV3Compatible: DemandApiV3CompatibleService;
 
   public readonly demandApiV2Compatible: DemandApiV2CompatibleService;

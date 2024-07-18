@@ -29,10 +29,10 @@ This endpoint returns the cheapest available product for each hotel matching the
 **Example Usage Code Snippet**
 
 ```typescript
-import { BookerInputDto, Booking, Coordinates, GuestsInputDto, SearchInputDto } from 'booking';
+import { BookerInputDto, BookingClient, Coordinates, GuestsInputDto, SearchInputDto } from 'booking_client';
 
 (async () => {
-  const booking = new Booking({
+  const bookingClient = new BookingClient({
     token: 'YOUR_TOKEN',
   });
 
@@ -94,7 +94,7 @@ import { BookerInputDto, Booking, Coordinates, GuestsInputDto, SearchInputDto } 
     page: 'page',
   };
 
-  const { data } = await booking.demandApiV3Compatible.search(input, {
+  const { data } = await bookingClient.demandApiV3Compatible.search(input, {
     accept: accept,
   });
 
@@ -123,10 +123,10 @@ This endpoint returns detailed information on all accommodation properties match
 **Example Usage Code Snippet**
 
 ```typescript
-import { Booking, DetailsInputDto } from 'booking';
+import { BookingClient, DetailsInputDto } from 'booking_client';
 
 (async () => {
-  const booking = new Booking({
+  const bookingClient = new BookingClient({
     token: 'YOUR_TOKEN',
   });
 
@@ -151,7 +151,7 @@ import { Booking, DetailsInputDto } from 'booking';
     page: 'page',
   };
 
-  const { data } = await booking.demandApiV3Compatible.postDetails(input, {
+  const { data } = await bookingClient.demandApiV3Compatible.postDetails(input, {
     accept: accept,
   });
 
@@ -180,10 +180,10 @@ This endpoint enumerates the internal codes and names, in the selected languages
 **Example Usage Code Snippet**
 
 ```typescript
-import { Booking, ConstantInputDto } from 'booking';
+import { BookingClient, ConstantInputDto } from 'booking_client';
 
 (async () => {
-  const booking = new Booking({
+  const bookingClient = new BookingClient({
     token: 'YOUR_TOKEN',
   });
 
@@ -198,7 +198,7 @@ import { Booking, ConstantInputDto } from 'booking';
     languages: [constantInputDtoLanguages],
   };
 
-  const { data } = await booking.demandApiV3Compatible.getAccommodationConstants(input, {
+  const { data } = await bookingClient.demandApiV3Compatible.getAccommodationConstants(input, {
     accept: accept,
   });
 

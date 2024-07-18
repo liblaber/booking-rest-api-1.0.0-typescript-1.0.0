@@ -1,7 +1,7 @@
-import { BookerInputDto, Booking, Coordinates, GuestsInputDto, SearchInputDto } from 'booking';
+import { BookerInputDto, BookingClient, Coordinates, GuestsInputDto, SearchInputDto } from 'booking_client';
 
 (async () => {
-  const booking = new Booking({
+  const bookingClient = new BookingClient({
     token: 'YOUR_TOKEN',
   });
 
@@ -63,7 +63,7 @@ import { BookerInputDto, Booking, Coordinates, GuestsInputDto, SearchInputDto } 
     page: 'page',
   };
 
-  const { data } = await booking.demandApiV3Compatible.search(input, {
+  const { data } = await bookingClient.demandApiV3Compatible.search(input, {
     accept: accept,
   });
 
