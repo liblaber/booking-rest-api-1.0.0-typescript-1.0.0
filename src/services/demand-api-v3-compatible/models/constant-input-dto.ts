@@ -7,9 +7,11 @@ import { constantInputDtoLanguages } from './constant-input-dto-languages';
 /**
  * The shape of the model inside the application code - what the users use
  */
-export const constantInputDto = z.object({
-  constants: z.array(constants).optional(),
-  languages: z.array(constantInputDtoLanguages).optional(),
+export const constantInputDto: any = z.lazy(() => {
+  return z.object({
+    constants: z.array(constants).optional(),
+    languages: z.array(constantInputDtoLanguages).optional(),
+  });
 });
 
 /**
@@ -24,23 +26,27 @@ export type ConstantInputDto = z.infer<typeof constantInputDto>;
  * The shape of the model mapping from the api schema into the application shape.
  * Is equal to application shape if all property names match the api schema
  */
-export const constantInputDtoResponse = z
-  .object({
-    constants: z.array(constants).optional(),
-    languages: z.array(constantInputDtoLanguages).optional(),
-  })
-  .transform((data) => ({
-    constants: data['constants'],
-    languages: data['languages'],
-  }));
+export const constantInputDtoResponse: any = z.lazy(() => {
+  return z
+    .object({
+      constants: z.array(constants).optional(),
+      languages: z.array(constantInputDtoLanguages).optional(),
+    })
+    .transform((data) => ({
+      constants: data['constants'],
+      languages: data['languages'],
+    }));
+});
 
 /**
  * The shape of the model mapping from the application shape into the api schema.
  * Is equal to application shape if all property names match the api schema
  */
-export const constantInputDtoRequest = z
-  .object({ constants: z.array(constants).nullish(), languages: z.array(constantInputDtoLanguages).nullish() })
-  .transform((data) => ({
-    constants: data['constants'],
-    languages: data['languages'],
-  }));
+export const constantInputDtoRequest: any = z.lazy(() => {
+  return z
+    .object({ constants: z.array(constants).nullish(), languages: z.array(constantInputDtoLanguages).nullish() })
+    .transform((data) => ({
+      constants: data['constants'],
+      languages: data['languages'],
+    }));
+});

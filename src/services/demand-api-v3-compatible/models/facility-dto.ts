@@ -6,9 +6,11 @@ import { facilityDtoAttributes } from './facility-dto-attributes';
 /**
  * The shape of the model inside the application code - what the users use
  */
-export const facilityDto = z.object({
-  id: z.number().optional(),
-  attributes: z.array(facilityDtoAttributes).optional(),
+export const facilityDto: any = z.lazy(() => {
+  return z.object({
+    id: z.number().optional(),
+    attributes: z.array(facilityDtoAttributes).optional(),
+  });
 });
 
 /**
@@ -25,23 +27,27 @@ export type FacilityDto = z.infer<typeof facilityDto>;
  * The shape of the model mapping from the api schema into the application shape.
  * Is equal to application shape if all property names match the api schema
  */
-export const facilityDtoResponse = z
-  .object({
-    id: z.number().optional(),
-    attributes: z.array(facilityDtoAttributes).optional(),
-  })
-  .transform((data) => ({
-    id: data['id'],
-    attributes: data['attributes'],
-  }));
+export const facilityDtoResponse: any = z.lazy(() => {
+  return z
+    .object({
+      id: z.number().optional(),
+      attributes: z.array(facilityDtoAttributes).optional(),
+    })
+    .transform((data) => ({
+      id: data['id'],
+      attributes: data['attributes'],
+    }));
+});
 
 /**
  * The shape of the model mapping from the application shape into the api schema.
  * Is equal to application shape if all property names match the api schema
  */
-export const facilityDtoRequest = z
-  .object({ id: z.number().nullish(), attributes: z.array(facilityDtoAttributes).nullish() })
-  .transform((data) => ({
-    id: data['id'],
-    attributes: data['attributes'],
-  }));
+export const facilityDtoRequest: any = z.lazy(() => {
+  return z
+    .object({ id: z.number().nullish(), attributes: z.array(facilityDtoAttributes).nullish() })
+    .transform((data) => ({
+      id: data['id'],
+      attributes: data['attributes'],
+    }));
+});

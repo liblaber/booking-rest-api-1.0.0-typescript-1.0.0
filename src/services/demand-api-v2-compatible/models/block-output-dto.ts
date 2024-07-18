@@ -5,9 +5,11 @@ import { z } from 'zod';
 /**
  * The shape of the model inside the application code - what the users use
  */
-export const blockOutputDto = z.object({
-  blockId: z.string().optional(),
-  breakfastIncluded: z.boolean().optional(),
+export const blockOutputDto: any = z.lazy(() => {
+  return z.object({
+    blockId: z.string().optional(),
+    breakfastIncluded: z.boolean().optional(),
+  });
 });
 
 /**
@@ -25,23 +27,25 @@ export type BlockOutputDto = z.infer<typeof blockOutputDto>;
  * The shape of the model mapping from the api schema into the application shape.
  * Is equal to application shape if all property names match the api schema
  */
-export const blockOutputDtoResponse = z
-  .object({
-    block_id: z.string().optional(),
-    breakfast_included: z.boolean().optional(),
-  })
-  .transform((data) => ({
-    blockId: data['block_id'],
-    breakfastIncluded: data['breakfast_included'],
-  }));
+export const blockOutputDtoResponse: any = z.lazy(() => {
+  return z
+    .object({
+      block_id: z.string().optional(),
+      breakfast_included: z.boolean().optional(),
+    })
+    .transform((data) => ({
+      blockId: data['block_id'],
+      breakfastIncluded: data['breakfast_included'],
+    }));
+});
 
 /**
  * The shape of the model mapping from the application shape into the api schema.
  * Is equal to application shape if all property names match the api schema
  */
-export const blockOutputDtoRequest = z
-  .object({ blockId: z.string().nullish(), breakfastIncluded: z.boolean().nullish() })
-  .transform((data) => ({
+export const blockOutputDtoRequest: any = z.lazy(() => {
+  return z.object({ blockId: z.string().nullish(), breakfastIncluded: z.boolean().nullish() }).transform((data) => ({
     block_id: data['blockId'],
     breakfast_included: data['breakfastIncluded'],
   }));
+});

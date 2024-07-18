@@ -6,9 +6,11 @@ import { type_ } from './type_';
 /**
  * The shape of the model inside the application code - what the users use
  */
-export const cancellationDto = z.object({
-  freeCancellationUntil: z.string().optional(),
-  type_: type_.optional(),
+export const cancellationDto: any = z.lazy(() => {
+  return z.object({
+    freeCancellationUntil: z.string().optional(),
+    type: type_.optional(),
+  });
 });
 
 /**
@@ -23,23 +25,25 @@ export type CancellationDto = z.infer<typeof cancellationDto>;
  * The shape of the model mapping from the api schema into the application shape.
  * Is equal to application shape if all property names match the api schema
  */
-export const cancellationDtoResponse = z
-  .object({
-    free_cancellation_until: z.string().optional(),
-    type: type_.optional(),
-  })
-  .transform((data) => ({
-    freeCancellationUntil: data['free_cancellation_until'],
-    type_: data['type'],
-  }));
+export const cancellationDtoResponse: any = z.lazy(() => {
+  return z
+    .object({
+      free_cancellation_until: z.string().optional(),
+      type: type_.optional(),
+    })
+    .transform((data) => ({
+      freeCancellationUntil: data['free_cancellation_until'],
+      type: data['type'],
+    }));
+});
 
 /**
  * The shape of the model mapping from the application shape into the api schema.
  * Is equal to application shape if all property names match the api schema
  */
-export const cancellationDtoRequest = z
-  .object({ freeCancellationUntil: z.string().nullish(), type_: type_.nullish() })
-  .transform((data) => ({
+export const cancellationDtoRequest: any = z.lazy(() => {
+  return z.object({ freeCancellationUntil: z.string().nullish(), type: type_.nullish() }).transform((data) => ({
     free_cancellation_until: data['freeCancellationUntil'],
-    type: data['type_'],
+    type: data['type'],
   }));
+});

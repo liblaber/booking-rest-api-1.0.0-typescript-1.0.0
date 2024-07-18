@@ -33,10 +33,10 @@ Gives information about review scores for specified hotel_ids and filter. The in
 **Example Usage Code Snippet**
 
 ```typescript
-import { Booking } from 'booking';
+import { BookingClient } from 'booking_client';
 
 (async () => {
-  const booking = new Booking({
+  const bookingClient = new BookingClient({
 	token: 'YOUR_TOKEN'});
 
   const reviewScoresInputDtoLanguage = ReviewScoresInputDtoLanguage.AR;
@@ -44,14 +44,14 @@ import { Booking } from 'booking';
 const reviewerType = ReviewerType.SOLO_TRAVELLER;
 
 const reviewScoresInputDto: ReviewScoresInputDto = {
-  hotelIds: [9],
-  affiliateId: 1,
+  hotelIds: [4],
+  affiliateId: 6,
   language: reviewScoresInputDtoLanguage,
   reviewerType: reviewerType
 };
 const accept = GetHotelsReviewScoresAccept.application/json, application/xml;
 
-  const { data } = await booking.demandApiV2Compatible.getHotelsReviewScores(
+  const { data } = await bookingClient.demandApiV2Compatible.getHotelsReviewScores(
   {
 		reviewScoresInputDto: reviewScoresInputDto,
 		accept: accept,
@@ -83,10 +83,10 @@ This call returns the hotel and room data. By default, only hotel_id is returned
 **Example Usage Code Snippet**
 
 ```typescript
-import { Booking } from 'booking';
+import { BookingClient } from 'booking_client';
 
 (async () => {
-  const booking = new Booking({
+  const bookingClient = new BookingClient({
 	token: 'YOUR_TOKEN'});
 
   const hotelsInputDtoLanguage = HotelsInputDtoLanguage.AR;
@@ -94,15 +94,15 @@ import { Booking } from 'booking';
 const hotelsInputDtoExtras = HotelsInputDtoExtras.HOTEL_INFO;
 
 const hotelsInput: HotelsInputDto = {
-  hotelIds: [123],
+  hotelIds: [6],
   language: hotelsInputDtoLanguage,
   extras: [hotelsInputDtoExtras],
-  offset: 5,
-  rows: 7
+  offset: 4,
+  rows: 9
 };
 const accept = GetHotelsAccept.application/json, application/xml;
 
-  const { data } = await booking.demandApiV2Compatible.getHotels(
+  const { data } = await bookingClient.demandApiV2Compatible.getHotels(
   {
 		hotelsInput: hotelsInput,
 		accept: accept,
@@ -134,24 +134,24 @@ This endpoint returns hotel types names and their translations. (EN is default)
 **Example Usage Code Snippet**
 
 ```typescript
-import { Booking } from 'booking';
+import { BookingClient } from 'booking_client';
 
 (async () => {
-  const booking = new Booking({
+  const bookingClient = new BookingClient({
     token: 'YOUR_TOKEN',
   });
 
   const hotelTypeInputDtoLanguages = HotelTypeInputDtoLanguages.AR;
 
   const hotelTypeInputDto: HotelTypeInputDto = {
-    hotelTypeIds: [10],
+    hotelTypeIds: [5],
     languages: [hotelTypeInputDtoLanguages],
-    offset: 6,
-    row: 8,
+    offset: 2,
+    row: 9,
   };
   const accept = GetHotelTypesAccept.application / json;
 
-  const { data } = await booking.demandApiV2Compatible.getHotelTypes({
+  const { data } = await bookingClient.demandApiV2Compatible.getHotelTypes({
     hotelTypeInputDto: hotelTypeInputDto,
     accept: accept,
   });
@@ -181,21 +181,21 @@ This endpoint returns a list of hotel theme types (in English).
 **Example Usage Code Snippet**
 
 ```typescript
-import { Booking } from 'booking';
+import { BookingClient } from 'booking_client';
 
 (async () => {
-  const booking = new Booking({
+  const bookingClient = new BookingClient({
     token: 'YOUR_TOKEN',
   });
 
   const hotelThemeTypeInputDto: HotelThemeTypeInputDto = {
-    themeIds: [2],
-    offset: 5,
-    row: 5,
+    themeIds: [9],
+    offset: 7,
+    row: 1,
   };
   const accept = GetHotelThemeTypesAccept.application / json;
 
-  const { data } = await booking.demandApiV2Compatible.getHotelThemeTypes({
+  const { data } = await bookingClient.demandApiV2Compatible.getHotelThemeTypes({
     hotelThemeTypeInputDto: hotelThemeTypeInputDto,
     accept: accept,
   });
@@ -225,23 +225,23 @@ This endpoint returns room facility types names and their translations (EN is de
 **Example Usage Code Snippet**
 
 ```typescript
-import { Booking } from 'booking';
+import { BookingClient } from 'booking_client';
 
 (async () => {
-  const booking = new Booking({
+  const bookingClient = new BookingClient({
     token: 'YOUR_TOKEN',
   });
 
   const hotelFacilityInputDtoLanguages = HotelFacilityInputDtoLanguages.AR;
 
   const hotelFacilityInputDto: HotelFacilityInputDto = {
-    facilityTypeIds: [123],
-    hotelFacilityTypeIds: [9],
+    facilityTypeIds: [1],
+    hotelFacilityTypeIds: [7],
     languages: [hotelFacilityInputDtoLanguages],
   };
   const accept = GetRoomFacilityTypesAccept.application / json;
 
-  const { data } = await booking.demandApiV2Compatible.getRoomFacilityTypes({
+  const { data } = await bookingClient.demandApiV2Compatible.getRoomFacilityTypes({
     hotelFacilityInputDto: hotelFacilityInputDto,
     accept: accept,
   });
@@ -271,10 +271,10 @@ This endpoint returns the cheapest available room for each hotel matching your c
 **Example Usage Code Snippet**
 
 ```typescript
-import { Booking } from 'booking';
+import { BookingClient } from 'booking_client';
 
 (async () => {
-  const booking = new Booking({
+  const bookingClient = new BookingClient({
     token: 'YOUR_TOKEN',
   });
 
@@ -283,17 +283,17 @@ import { Booking } from 'booking';
   const hotelAvailabilityInputDto: HotelAvailabilityInputDto = {
     checkin: 'checkin',
     checkout: 'checkout',
-    hotelIds: [5],
+    hotelIds: [123],
     currency: 'currency',
     guestCountry: 'guest_country',
-    noRooms: 8,
+    noRooms: 7,
     userPlatform: hotelAvailabilityInputDtoUserPlatform,
-    rows: 617,
+    rows: 575,
     page: 'page',
   };
   const accept = GetHotelAvailabilityAccept.application / json;
 
-  const { data } = await booking.demandApiV2Compatible.getHotelAvailability({
+  const { data } = await bookingClient.demandApiV2Compatible.getHotelAvailability({
     hotelAvailabilityInputDto: hotelAvailabilityInputDto,
     accept: accept,
   });
@@ -323,10 +323,10 @@ This endpoint is where you find a list of all bookable or available rooms at a p
 **Example Usage Code Snippet**
 
 ```typescript
-import { Booking } from 'booking';
+import { BookingClient } from 'booking_client';
 
 (async () => {
-  const booking = new Booking({
+  const bookingClient = new BookingClient({
 	token: 'YOUR_TOKEN'});
 
   const blockAvailabilityInputDtoExtras = BlockAvailabilityInputDtoExtras.ADDON_TYPE;
@@ -336,7 +336,7 @@ const blockAvailabilityInputDtoLanguage = BlockAvailabilityInputDtoLanguage.AR;
 const blockAvailabilityInputDtoUserPlatform = BlockAvailabilityInputDtoUserPlatform.ANDROID;
 
 const blockInput: BlockAvailabilityInputDto = {
-  hotelIds: [10],
+  hotelIds: [6],
   checkin: "checkin",
   checkout: "checkout",
   guestCc: "guest_cc",
@@ -345,15 +345,15 @@ const blockInput: BlockAvailabilityInputDto = {
   affiliateId: "affiliate_id",
   blockIds: ["5555555_55555555_5_5_5,6666666_66666666_6_6_6"],
   guestIp: "guest_ip",
-  guestQty: [10],
+  guestQty: [2],
   language: blockAvailabilityInputDtoLanguage,
-  numRooms: 4,
+  numRooms: 9,
   room1: ["room1"],
   userPlatform: blockAvailabilityInputDtoUserPlatform
 };
 const accept = GetBlockAvailabilityAccept.application/json, application/xml;
 
-  const { data } = await booking.demandApiV2Compatible.getBlockAvailability(
+  const { data } = await bookingClient.demandApiV2Compatible.getBlockAvailability(
   {
 		blockInput: blockInput,
 		accept: accept,

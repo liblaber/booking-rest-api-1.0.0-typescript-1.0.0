@@ -5,8 +5,10 @@ import { z } from 'zod';
 /**
  * The shape of the model inside the application code - what the users use
  */
-export const translatedString = z.object({
-  translations: z.any().optional(),
+export const translatedString: any = z.lazy(() => {
+  return z.object({
+    translations: z.any().optional(),
+  });
 });
 
 /**
@@ -20,18 +22,22 @@ export type TranslatedString = z.infer<typeof translatedString>;
  * The shape of the model mapping from the api schema into the application shape.
  * Is equal to application shape if all property names match the api schema
  */
-export const translatedStringResponse = z
-  .object({
-    translations: z.any().optional(),
-  })
-  .transform((data) => ({
-    translations: data['translations'],
-  }));
+export const translatedStringResponse: any = z.lazy(() => {
+  return z
+    .object({
+      translations: z.any().optional(),
+    })
+    .transform((data) => ({
+      translations: data['translations'],
+    }));
+});
 
 /**
  * The shape of the model mapping from the application shape into the api schema.
  * Is equal to application shape if all property names match the api schema
  */
-export const translatedStringRequest = z.object({ translations: z.any().nullish() }).transform((data) => ({
-  translations: data['translations'],
-}));
+export const translatedStringRequest: any = z.lazy(() => {
+  return z.object({ translations: z.any().nullish() }).transform((data) => ({
+    translations: data['translations'],
+  }));
+});

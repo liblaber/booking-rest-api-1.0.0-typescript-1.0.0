@@ -10,8 +10,10 @@ import {
 /**
  * The shape of the model inside the application code - what the users use
  */
-export const bedroomDto = z.object({
-  bedConfigurations: z.array(bedConfigurationDto).optional(),
+export const bedroomDto: any = z.lazy(() => {
+  return z.object({
+    bedConfigurations: z.array(bedConfigurationDto).optional(),
+  });
 });
 
 /**
@@ -25,20 +27,22 @@ export type BedroomDto = z.infer<typeof bedroomDto>;
  * The shape of the model mapping from the api schema into the application shape.
  * Is equal to application shape if all property names match the api schema
  */
-export const bedroomDtoResponse = z
-  .object({
-    bed_configurations: z.array(bedConfigurationDtoResponse).optional(),
-  })
-  .transform((data) => ({
-    bedConfigurations: data['bed_configurations'],
-  }));
+export const bedroomDtoResponse: any = z.lazy(() => {
+  return z
+    .object({
+      bed_configurations: z.array(bedConfigurationDtoResponse).optional(),
+    })
+    .transform((data) => ({
+      bedConfigurations: data['bed_configurations'],
+    }));
+});
 
 /**
  * The shape of the model mapping from the application shape into the api schema.
  * Is equal to application shape if all property names match the api schema
  */
-export const bedroomDtoRequest = z
-  .object({ bedConfigurations: z.array(bedConfigurationDtoRequest).nullish() })
-  .transform((data) => ({
+export const bedroomDtoRequest: any = z.lazy(() => {
+  return z.object({ bedConfigurations: z.array(bedConfigurationDtoRequest).nullish() }).transform((data) => ({
     bed_configurations: data['bedConfigurations'],
   }));
+});

@@ -5,9 +5,11 @@ import { z } from 'zod';
 /**
  * The shape of the model inside the application code - what the users use
  */
-export const allocationInputDto = z.object({
-  children: z.array(z.number()).optional(),
-  numberOfAdults: z.number().gte(1),
+export const allocationInputDto: any = z.lazy(() => {
+  return z.object({
+    children: z.array(z.number()).optional(),
+    numberOfAdults: z.number().gte(1),
+  });
 });
 
 /**
@@ -22,23 +24,27 @@ export type AllocationInputDto = z.infer<typeof allocationInputDto>;
  * The shape of the model mapping from the api schema into the application shape.
  * Is equal to application shape if all property names match the api schema
  */
-export const allocationInputDtoResponse = z
-  .object({
-    children: z.array(z.number()).optional(),
-    number_of_adults: z.number().gte(1),
-  })
-  .transform((data) => ({
-    children: data['children'],
-    numberOfAdults: data['number_of_adults'],
-  }));
+export const allocationInputDtoResponse: any = z.lazy(() => {
+  return z
+    .object({
+      children: z.array(z.number()).optional(),
+      number_of_adults: z.number().gte(1),
+    })
+    .transform((data) => ({
+      children: data['children'],
+      numberOfAdults: data['number_of_adults'],
+    }));
+});
 
 /**
  * The shape of the model mapping from the application shape into the api schema.
  * Is equal to application shape if all property names match the api schema
  */
-export const allocationInputDtoRequest = z
-  .object({ children: z.array(z.number()).nullish(), numberOfAdults: z.number().nullish() })
-  .transform((data) => ({
-    children: data['children'],
-    number_of_adults: data['numberOfAdults'],
-  }));
+export const allocationInputDtoRequest: any = z.lazy(() => {
+  return z
+    .object({ children: z.array(z.number()).nullish(), numberOfAdults: z.number().nullish() })
+    .transform((data) => ({
+      children: data['children'],
+      number_of_adults: data['numberOfAdults'],
+    }));
+});

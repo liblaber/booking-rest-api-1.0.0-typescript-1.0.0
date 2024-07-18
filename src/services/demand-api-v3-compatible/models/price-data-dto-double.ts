@@ -10,11 +10,13 @@ import {
 /**
  * The shape of the model inside the application code - what the users use
  */
-export const priceDataDtoDouble = z.object({
-  base: z.number().optional(),
-  book: z.number().optional(),
-  total: z.number().optional(),
-  extraCharges: extraChargesDtoDouble.optional(),
+export const priceDataDtoDouble: any = z.lazy(() => {
+  return z.object({
+    base: z.number().optional(),
+    book: z.number().optional(),
+    total: z.number().optional(),
+    extraCharges: extraChargesDtoDouble.optional(),
+  });
 });
 
 /**
@@ -34,34 +36,38 @@ export type PriceDataDtoDouble = z.infer<typeof priceDataDtoDouble>;
  * The shape of the model mapping from the api schema into the application shape.
  * Is equal to application shape if all property names match the api schema
  */
-export const priceDataDtoDoubleResponse = z
-  .object({
-    base: z.number().optional(),
-    book: z.number().optional(),
-    total: z.number().optional(),
-    extra_charges: extraChargesDtoDoubleResponse.optional(),
-  })
-  .transform((data) => ({
-    base: data['base'],
-    book: data['book'],
-    total: data['total'],
-    extraCharges: data['extra_charges'],
-  }));
+export const priceDataDtoDoubleResponse: any = z.lazy(() => {
+  return z
+    .object({
+      base: z.number().optional(),
+      book: z.number().optional(),
+      total: z.number().optional(),
+      extra_charges: extraChargesDtoDoubleResponse.optional(),
+    })
+    .transform((data) => ({
+      base: data['base'],
+      book: data['book'],
+      total: data['total'],
+      extraCharges: data['extra_charges'],
+    }));
+});
 
 /**
  * The shape of the model mapping from the application shape into the api schema.
  * Is equal to application shape if all property names match the api schema
  */
-export const priceDataDtoDoubleRequest = z
-  .object({
-    base: z.number().nullish(),
-    book: z.number().nullish(),
-    total: z.number().nullish(),
-    extraCharges: extraChargesDtoDoubleRequest.nullish(),
-  })
-  .transform((data) => ({
-    base: data['base'],
-    book: data['book'],
-    total: data['total'],
-    extra_charges: data['extraCharges'],
-  }));
+export const priceDataDtoDoubleRequest: any = z.lazy(() => {
+  return z
+    .object({
+      base: z.number().nullish(),
+      book: z.number().nullish(),
+      total: z.number().nullish(),
+      extraCharges: extraChargesDtoDoubleRequest.nullish(),
+    })
+    .transform((data) => ({
+      base: data['base'],
+      book: data['book'],
+      total: data['total'],
+      extra_charges: data['extraCharges'],
+    }));
+});

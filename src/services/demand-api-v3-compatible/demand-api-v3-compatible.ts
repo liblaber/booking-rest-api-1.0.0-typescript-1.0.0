@@ -4,21 +4,23 @@ import { z } from 'zod';
 import { BaseService } from '../base-service';
 import { ContentType, HttpResponse } from '../../http';
 import { RequestConfig } from '../../http/types';
+import { Request } from '../../http/transport/request';
+import { SearchInputDto, searchInputDtoRequest } from './models/search-input-dto';
 import {
-  ConstantInputDto,
-  DetailsInputDto,
-  ResponseOutputConstantsOutputDto,
-  ResponseOutputListDetailsOutputDto,
   ResponseOutputListSearchOutputDto,
-  SearchInputDto,
-  constantInputDtoRequest,
-  detailsInputDtoRequest,
-  responseOutputConstantsOutputDtoResponse,
-  responseOutputListDetailsOutputDtoResponse,
   responseOutputListSearchOutputDtoResponse,
-  searchInputDtoRequest,
-} from './models';
+} from './models/response-output-list-search-output-dto';
 import { GetAccommodationConstantsParams, PostDetailsParams, SearchParams } from './request-params';
+import { DetailsInputDto, detailsInputDtoRequest } from './models/details-input-dto';
+import {
+  ResponseOutputListDetailsOutputDto,
+  responseOutputListDetailsOutputDtoResponse,
+} from './models/response-output-list-details-output-dto';
+import { ConstantInputDto, constantInputDtoRequest } from './models/constant-input-dto';
+import {
+  ResponseOutputConstantsOutputDto,
+  responseOutputConstantsOutputDtoResponse,
+} from './models/response-output-constants-output-dto';
 
 export class DemandApiV3CompatibleService extends BaseService {
   /**
@@ -31,23 +33,20 @@ export class DemandApiV3CompatibleService extends BaseService {
     params?: SearchParams,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<ResponseOutputListSearchOutputDto>> {
-    const path = '/demand-api-v3-compatible/search';
-    const options: any = {
+    const request = new Request({
+      method: 'POST',
+      body,
+      path: '/demand-api-v3-compatible/search',
+      config: this.config,
       responseSchema: responseOutputListSearchOutputDtoResponse,
       requestSchema: searchInputDtoRequest,
-      body: body as any,
-      headers: {
-        'Content-Type': 'application/json',
-      },
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    if (params?.accept) {
-      options.headers['Accept'] = params?.accept;
-    }
-    return this.client.post(path, options);
+      requestConfig,
+    });
+    request.addHeaderParam('Accept', params?.accept);
+    request.addHeaderParam('Content-Type', 'application/json');
+    return this.client.call(request);
   }
 
   /**
@@ -62,23 +61,20 @@ Is is mandatory to pass one of the input parameters: accommodations, airport, ci
     params?: PostDetailsParams,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<ResponseOutputListDetailsOutputDto>> {
-    const path = '/demand-api-v3-compatible/details';
-    const options: any = {
+    const request = new Request({
+      method: 'POST',
+      body,
+      path: '/demand-api-v3-compatible/details',
+      config: this.config,
       responseSchema: responseOutputListDetailsOutputDtoResponse,
       requestSchema: detailsInputDtoRequest,
-      body: body as any,
-      headers: {
-        'Content-Type': 'application/json',
-      },
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    if (params?.accept) {
-      options.headers['Accept'] = params?.accept;
-    }
-    return this.client.post(path, options);
+      requestConfig,
+    });
+    request.addHeaderParam('Accept', params?.accept);
+    request.addHeaderParam('Content-Type', 'application/json');
+    return this.client.call(request);
   }
 
   /**
@@ -101,22 +97,19 @@ The codes returned are what is used as input and output for other endpoints in t
     params?: GetAccommodationConstantsParams,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<ResponseOutputConstantsOutputDto>> {
-    const path = '/demand-api-v3-compatible/constants';
-    const options: any = {
+    const request = new Request({
+      method: 'POST',
+      body,
+      path: '/demand-api-v3-compatible/constants',
+      config: this.config,
       responseSchema: responseOutputConstantsOutputDtoResponse,
       requestSchema: constantInputDtoRequest,
-      body: body as any,
-      headers: {
-        'Content-Type': 'application/json',
-      },
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    if (params?.accept) {
-      options.headers['Accept'] = params?.accept;
-    }
-    return this.client.post(path, options);
+      requestConfig,
+    });
+    request.addHeaderParam('Accept', params?.accept);
+    request.addHeaderParam('Content-Type', 'application/json');
+    return this.client.call(request);
   }
 }

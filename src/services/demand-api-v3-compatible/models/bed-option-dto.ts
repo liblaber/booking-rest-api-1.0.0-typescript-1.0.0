@@ -10,10 +10,12 @@ import {
 /**
  * The shape of the model inside the application code - what the users use
  */
-export const bedOptionDto = z.object({
-  bedConfigurations: z.array(bedConfigurationDto).optional(),
-  hasBathroom: z.boolean().optional(),
-  isBedroom: z.boolean().optional(),
+export const bedOptionDto: any = z.lazy(() => {
+  return z.object({
+    bedConfigurations: z.array(bedConfigurationDto).optional(),
+    hasBathroom: z.boolean().optional(),
+    isBedroom: z.boolean().optional(),
+  });
 });
 
 /**
@@ -29,30 +31,34 @@ export type BedOptionDto = z.infer<typeof bedOptionDto>;
  * The shape of the model mapping from the api schema into the application shape.
  * Is equal to application shape if all property names match the api schema
  */
-export const bedOptionDtoResponse = z
-  .object({
-    bed_configurations: z.array(bedConfigurationDtoResponse).optional(),
-    has_bathroom: z.boolean().optional(),
-    is_bedroom: z.boolean().optional(),
-  })
-  .transform((data) => ({
-    bedConfigurations: data['bed_configurations'],
-    hasBathroom: data['has_bathroom'],
-    isBedroom: data['is_bedroom'],
-  }));
+export const bedOptionDtoResponse: any = z.lazy(() => {
+  return z
+    .object({
+      bed_configurations: z.array(bedConfigurationDtoResponse).optional(),
+      has_bathroom: z.boolean().optional(),
+      is_bedroom: z.boolean().optional(),
+    })
+    .transform((data) => ({
+      bedConfigurations: data['bed_configurations'],
+      hasBathroom: data['has_bathroom'],
+      isBedroom: data['is_bedroom'],
+    }));
+});
 
 /**
  * The shape of the model mapping from the application shape into the api schema.
  * Is equal to application shape if all property names match the api schema
  */
-export const bedOptionDtoRequest = z
-  .object({
-    bedConfigurations: z.array(bedConfigurationDtoRequest).nullish(),
-    hasBathroom: z.boolean().nullish(),
-    isBedroom: z.boolean().nullish(),
-  })
-  .transform((data) => ({
-    bed_configurations: data['bedConfigurations'],
-    has_bathroom: data['hasBathroom'],
-    is_bedroom: data['isBedroom'],
-  }));
+export const bedOptionDtoRequest: any = z.lazy(() => {
+  return z
+    .object({
+      bedConfigurations: z.array(bedConfigurationDtoRequest).nullish(),
+      hasBathroom: z.boolean().nullish(),
+      isBedroom: z.boolean().nullish(),
+    })
+    .transform((data) => ({
+      bed_configurations: data['bedConfigurations'],
+      has_bathroom: data['hasBathroom'],
+      is_bedroom: data['isBedroom'],
+    }));
+});

@@ -6,9 +6,11 @@ import { bedDto, bedDtoRequest, bedDtoResponse } from './bed-dto';
 /**
  * The shape of the model inside the application code - what the users use
  */
-export const bedConfigurationDto = z.object({
-  id: z.string().optional(),
-  configuration: z.array(bedDto).optional(),
+export const bedConfigurationDto: any = z.lazy(() => {
+  return z.object({
+    id: z.string().optional(),
+    configuration: z.array(bedDto).optional(),
+  });
 });
 
 /**
@@ -23,23 +25,25 @@ export type BedConfigurationDto = z.infer<typeof bedConfigurationDto>;
  * The shape of the model mapping from the api schema into the application shape.
  * Is equal to application shape if all property names match the api schema
  */
-export const bedConfigurationDtoResponse = z
-  .object({
-    id: z.string().optional(),
-    configuration: z.array(bedDtoResponse).optional(),
-  })
-  .transform((data) => ({
-    id: data['id'],
-    configuration: data['configuration'],
-  }));
+export const bedConfigurationDtoResponse: any = z.lazy(() => {
+  return z
+    .object({
+      id: z.string().optional(),
+      configuration: z.array(bedDtoResponse).optional(),
+    })
+    .transform((data) => ({
+      id: data['id'],
+      configuration: data['configuration'],
+    }));
+});
 
 /**
  * The shape of the model mapping from the application shape into the api schema.
  * Is equal to application shape if all property names match the api schema
  */
-export const bedConfigurationDtoRequest = z
-  .object({ id: z.string().nullish(), configuration: z.array(bedDtoRequest).nullish() })
-  .transform((data) => ({
+export const bedConfigurationDtoRequest: any = z.lazy(() => {
+  return z.object({ id: z.string().nullish(), configuration: z.array(bedDtoRequest).nullish() }).transform((data) => ({
     id: data['id'],
     configuration: data['configuration'],
   }));
+});

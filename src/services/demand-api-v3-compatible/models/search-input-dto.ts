@@ -9,36 +9,38 @@ import { coordinates, coordinatesRequest, coordinatesResponse } from './coordina
 /**
  * The shape of the model inside the application code - what the users use
  */
-export const searchInputDto = z.object({
-  checkin: z.string(),
-  checkout: z.string(),
-  booker: bookerInputDto,
-  currency: z
-    .string()
-    .regex(/^[A-Z]{3}$/)
-    .optional(),
-  city: z.number().optional(),
-  country: z
-    .string()
-    .regex(/^[a-z]{2}$/)
-    .optional(),
-  guests: guestsInputDto,
-  extras: z.array(searchInputDtoExtras).optional(),
-  accommodations: z.array(z.number()).max(100).optional(),
-  accommodationFacilities: z.array(z.number()).optional(),
-  roomFacilities: z.array(z.number()).optional(),
-  accommodationTypes: z.array(z.number()).optional(),
-  brands: z.array(z.number()).optional(),
-  airport: z
-    .string()
-    .regex(/^[A-Z]{3}$/)
-    .optional(),
-  district: z.number().optional(),
-  landmark: z.number().optional(),
-  coordinates: coordinates.optional(),
-  region: z.number().optional(),
-  rows: z.number().lte(1000).optional(),
-  page: z.string().optional(),
+export const searchInputDto: any = z.lazy(() => {
+  return z.object({
+    checkin: z.string(),
+    checkout: z.string(),
+    booker: bookerInputDto,
+    currency: z
+      .string()
+      .regex(/^[A-Z]{3}$/)
+      .optional(),
+    city: z.number().optional(),
+    country: z
+      .string()
+      .regex(/^[a-z]{2}$/)
+      .optional(),
+    guests: guestsInputDto,
+    extras: z.array(searchInputDtoExtras).optional(),
+    accommodations: z.array(z.number()).max(100).optional(),
+    accommodationFacilities: z.array(z.number()).optional(),
+    roomFacilities: z.array(z.number()).optional(),
+    accommodationTypes: z.array(z.number()).optional(),
+    brands: z.array(z.number()).optional(),
+    airport: z
+      .string()
+      .regex(/^[A-Z]{3}$/)
+      .optional(),
+    district: z.number().optional(),
+    landmark: z.number().optional(),
+    coordinates: coordinates.optional(),
+    region: z.number().optional(),
+    rows: z.number().lte(1000).optional(),
+    page: z.string().optional(),
+  });
 });
 
 /**
@@ -79,107 +81,111 @@ export type SearchInputDto = z.infer<typeof searchInputDto>;
  * The shape of the model mapping from the api schema into the application shape.
  * Is equal to application shape if all property names match the api schema
  */
-export const searchInputDtoResponse = z
-  .object({
-    checkin: z.string(),
-    checkout: z.string(),
-    booker: bookerInputDtoResponse,
-    currency: z
-      .string()
-      .regex(/^[A-Z]{3}$/)
-      .optional(),
-    city: z.number().optional(),
-    country: z
-      .string()
-      .regex(/^[a-z]{2}$/)
-      .optional(),
-    guests: guestsInputDtoResponse,
-    extras: z.array(searchInputDtoExtras).optional(),
-    accommodations: z.array(z.number()).max(100).optional(),
-    accommodation_facilities: z.array(z.number()).optional(),
-    room_facilities: z.array(z.number()).optional(),
-    accommodation_types: z.array(z.number()).optional(),
-    brands: z.array(z.number()).optional(),
-    airport: z
-      .string()
-      .regex(/^[A-Z]{3}$/)
-      .optional(),
-    district: z.number().optional(),
-    landmark: z.number().optional(),
-    coordinates: coordinatesResponse.optional(),
-    region: z.number().optional(),
-    rows: z.number().lte(1000).optional(),
-    page: z.string().optional(),
-  })
-  .transform((data) => ({
-    checkin: data['checkin'],
-    checkout: data['checkout'],
-    booker: data['booker'],
-    currency: data['currency'],
-    city: data['city'],
-    country: data['country'],
-    guests: data['guests'],
-    extras: data['extras'],
-    accommodations: data['accommodations'],
-    accommodationFacilities: data['accommodation_facilities'],
-    roomFacilities: data['room_facilities'],
-    accommodationTypes: data['accommodation_types'],
-    brands: data['brands'],
-    airport: data['airport'],
-    district: data['district'],
-    landmark: data['landmark'],
-    coordinates: data['coordinates'],
-    region: data['region'],
-    rows: data['rows'],
-    page: data['page'],
-  }));
+export const searchInputDtoResponse: any = z.lazy(() => {
+  return z
+    .object({
+      checkin: z.string(),
+      checkout: z.string(),
+      booker: bookerInputDtoResponse,
+      currency: z
+        .string()
+        .regex(/^[A-Z]{3}$/)
+        .optional(),
+      city: z.number().optional(),
+      country: z
+        .string()
+        .regex(/^[a-z]{2}$/)
+        .optional(),
+      guests: guestsInputDtoResponse,
+      extras: z.array(searchInputDtoExtras).optional(),
+      accommodations: z.array(z.number()).max(100).optional(),
+      accommodation_facilities: z.array(z.number()).optional(),
+      room_facilities: z.array(z.number()).optional(),
+      accommodation_types: z.array(z.number()).optional(),
+      brands: z.array(z.number()).optional(),
+      airport: z
+        .string()
+        .regex(/^[A-Z]{3}$/)
+        .optional(),
+      district: z.number().optional(),
+      landmark: z.number().optional(),
+      coordinates: coordinatesResponse.optional(),
+      region: z.number().optional(),
+      rows: z.number().lte(1000).optional(),
+      page: z.string().optional(),
+    })
+    .transform((data) => ({
+      checkin: data['checkin'],
+      checkout: data['checkout'],
+      booker: data['booker'],
+      currency: data['currency'],
+      city: data['city'],
+      country: data['country'],
+      guests: data['guests'],
+      extras: data['extras'],
+      accommodations: data['accommodations'],
+      accommodationFacilities: data['accommodation_facilities'],
+      roomFacilities: data['room_facilities'],
+      accommodationTypes: data['accommodation_types'],
+      brands: data['brands'],
+      airport: data['airport'],
+      district: data['district'],
+      landmark: data['landmark'],
+      coordinates: data['coordinates'],
+      region: data['region'],
+      rows: data['rows'],
+      page: data['page'],
+    }));
+});
 
 /**
  * The shape of the model mapping from the application shape into the api schema.
  * Is equal to application shape if all property names match the api schema
  */
-export const searchInputDtoRequest = z
-  .object({
-    checkin: z.string().nullish(),
-    checkout: z.string().nullish(),
-    booker: bookerInputDtoRequest.nullish(),
-    currency: z.string().nullish(),
-    city: z.number().nullish(),
-    country: z.string().nullish(),
-    guests: guestsInputDtoRequest.nullish(),
-    extras: z.array(searchInputDtoExtras).nullish(),
-    accommodations: z.array(z.number()).nullish(),
-    accommodationFacilities: z.array(z.number()).nullish(),
-    roomFacilities: z.array(z.number()).nullish(),
-    accommodationTypes: z.array(z.number()).nullish(),
-    brands: z.array(z.number()).nullish(),
-    airport: z.string().nullish(),
-    district: z.number().nullish(),
-    landmark: z.number().nullish(),
-    coordinates: coordinatesRequest.nullish(),
-    region: z.number().nullish(),
-    rows: z.number().nullish(),
-    page: z.string().nullish(),
-  })
-  .transform((data) => ({
-    checkin: data['checkin'],
-    checkout: data['checkout'],
-    booker: data['booker'],
-    currency: data['currency'],
-    city: data['city'],
-    country: data['country'],
-    guests: data['guests'],
-    extras: data['extras'],
-    accommodations: data['accommodations'],
-    accommodation_facilities: data['accommodationFacilities'],
-    room_facilities: data['roomFacilities'],
-    accommodation_types: data['accommodationTypes'],
-    brands: data['brands'],
-    airport: data['airport'],
-    district: data['district'],
-    landmark: data['landmark'],
-    coordinates: data['coordinates'],
-    region: data['region'],
-    rows: data['rows'],
-    page: data['page'],
-  }));
+export const searchInputDtoRequest: any = z.lazy(() => {
+  return z
+    .object({
+      checkin: z.string().nullish(),
+      checkout: z.string().nullish(),
+      booker: bookerInputDtoRequest.nullish(),
+      currency: z.string().nullish(),
+      city: z.number().nullish(),
+      country: z.string().nullish(),
+      guests: guestsInputDtoRequest.nullish(),
+      extras: z.array(searchInputDtoExtras).nullish(),
+      accommodations: z.array(z.number()).nullish(),
+      accommodationFacilities: z.array(z.number()).nullish(),
+      roomFacilities: z.array(z.number()).nullish(),
+      accommodationTypes: z.array(z.number()).nullish(),
+      brands: z.array(z.number()).nullish(),
+      airport: z.string().nullish(),
+      district: z.number().nullish(),
+      landmark: z.number().nullish(),
+      coordinates: coordinatesRequest.nullish(),
+      region: z.number().nullish(),
+      rows: z.number().nullish(),
+      page: z.string().nullish(),
+    })
+    .transform((data) => ({
+      checkin: data['checkin'],
+      checkout: data['checkout'],
+      booker: data['booker'],
+      currency: data['currency'],
+      city: data['city'],
+      country: data['country'],
+      guests: data['guests'],
+      extras: data['extras'],
+      accommodations: data['accommodations'],
+      accommodation_facilities: data['accommodationFacilities'],
+      room_facilities: data['roomFacilities'],
+      accommodation_types: data['accommodationTypes'],
+      brands: data['brands'],
+      airport: data['airport'],
+      district: data['district'],
+      landmark: data['landmark'],
+      coordinates: data['coordinates'],
+      region: data['region'],
+      rows: data['rows'],
+      page: data['page'],
+    }));
+});

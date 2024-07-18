@@ -7,9 +7,11 @@ import { plan } from './plan';
 /**
  * The shape of the model inside the application code - what the users use
  */
-export const mealPlanDto = z.object({
-  meals: z.array(meals).optional(),
-  plan: plan.optional(),
+export const mealPlanDto: any = z.lazy(() => {
+  return z.object({
+    meals: z.array(meals).optional(),
+    plan: plan.optional(),
+  });
 });
 
 /**
@@ -24,23 +26,25 @@ export type MealPlanDto = z.infer<typeof mealPlanDto>;
  * The shape of the model mapping from the api schema into the application shape.
  * Is equal to application shape if all property names match the api schema
  */
-export const mealPlanDtoResponse = z
-  .object({
-    meals: z.array(meals).optional(),
-    plan: plan.optional(),
-  })
-  .transform((data) => ({
-    meals: data['meals'],
-    plan: data['plan'],
-  }));
+export const mealPlanDtoResponse: any = z.lazy(() => {
+  return z
+    .object({
+      meals: z.array(meals).optional(),
+      plan: plan.optional(),
+    })
+    .transform((data) => ({
+      meals: data['meals'],
+      plan: data['plan'],
+    }));
+});
 
 /**
  * The shape of the model mapping from the application shape into the api schema.
  * Is equal to application shape if all property names match the api schema
  */
-export const mealPlanDtoRequest = z
-  .object({ meals: z.array(meals).nullish(), plan: plan.nullish() })
-  .transform((data) => ({
+export const mealPlanDtoRequest: any = z.lazy(() => {
+  return z.object({ meals: z.array(meals).nullish(), plan: plan.nullish() }).transform((data) => ({
     meals: data['meals'],
     plan: data['plan'],
   }));
+});

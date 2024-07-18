@@ -5,10 +5,12 @@ import { z } from 'zod';
 /**
  * The shape of the model inside the application code - what the users use
  */
-export const hotelThemeTypeInputDto = z.object({
-  themeIds: z.array(z.number()).optional(),
-  offset: z.number().optional(),
-  row: z.number().optional(),
+export const hotelThemeTypeInputDto: any = z.lazy(() => {
+  return z.object({
+    themeIds: z.array(z.number()).optional(),
+    offset: z.number().optional(),
+    row: z.number().optional(),
+  });
 });
 
 /**
@@ -24,26 +26,30 @@ export type HotelThemeTypeInputDto = z.infer<typeof hotelThemeTypeInputDto>;
  * The shape of the model mapping from the api schema into the application shape.
  * Is equal to application shape if all property names match the api schema
  */
-export const hotelThemeTypeInputDtoResponse = z
-  .object({
-    theme_ids: z.array(z.number()).optional(),
-    offset: z.number().optional(),
-    row: z.number().optional(),
-  })
-  .transform((data) => ({
-    themeIds: data['theme_ids'],
-    offset: data['offset'],
-    row: data['row'],
-  }));
+export const hotelThemeTypeInputDtoResponse: any = z.lazy(() => {
+  return z
+    .object({
+      theme_ids: z.array(z.number()).optional(),
+      offset: z.number().optional(),
+      row: z.number().optional(),
+    })
+    .transform((data) => ({
+      themeIds: data['theme_ids'],
+      offset: data['offset'],
+      row: data['row'],
+    }));
+});
 
 /**
  * The shape of the model mapping from the application shape into the api schema.
  * Is equal to application shape if all property names match the api schema
  */
-export const hotelThemeTypeInputDtoRequest = z
-  .object({ themeIds: z.array(z.number()).nullish(), offset: z.number().nullish(), row: z.number().nullish() })
-  .transform((data) => ({
-    theme_ids: data['themeIds'],
-    offset: data['offset'],
-    row: data['row'],
-  }));
+export const hotelThemeTypeInputDtoRequest: any = z.lazy(() => {
+  return z
+    .object({ themeIds: z.array(z.number()).nullish(), offset: z.number().nullish(), row: z.number().nullish() })
+    .transform((data) => ({
+      theme_ids: data['themeIds'],
+      offset: data['offset'],
+      row: data['row'],
+    }));
+});

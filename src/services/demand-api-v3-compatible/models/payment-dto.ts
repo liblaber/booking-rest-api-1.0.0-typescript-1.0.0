@@ -6,8 +6,10 @@ import { paymentTypes } from './payment-types';
 /**
  * The shape of the model inside the application code - what the users use
  */
-export const paymentDto = z.object({
-  paymentTypes: z.array(paymentTypes).optional(),
+export const paymentDto: any = z.lazy(() => {
+  return z.object({
+    paymentTypes: z.array(paymentTypes).optional(),
+  });
 });
 
 /**
@@ -21,18 +23,22 @@ export type PaymentDto = z.infer<typeof paymentDto>;
  * The shape of the model mapping from the api schema into the application shape.
  * Is equal to application shape if all property names match the api schema
  */
-export const paymentDtoResponse = z
-  .object({
-    payment_types: z.array(paymentTypes).optional(),
-  })
-  .transform((data) => ({
-    paymentTypes: data['payment_types'],
-  }));
+export const paymentDtoResponse: any = z.lazy(() => {
+  return z
+    .object({
+      payment_types: z.array(paymentTypes).optional(),
+    })
+    .transform((data) => ({
+      paymentTypes: data['payment_types'],
+    }));
+});
 
 /**
  * The shape of the model mapping from the application shape into the api schema.
  * Is equal to application shape if all property names match the api schema
  */
-export const paymentDtoRequest = z.object({ paymentTypes: z.array(paymentTypes).nullish() }).transform((data) => ({
-  payment_types: data['paymentTypes'],
-}));
+export const paymentDtoRequest: any = z.lazy(() => {
+  return z.object({ paymentTypes: z.array(paymentTypes).nullish() }).transform((data) => ({
+    payment_types: data['paymentTypes'],
+  }));
+});

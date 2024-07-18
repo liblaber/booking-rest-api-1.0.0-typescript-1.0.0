@@ -7,7 +7,7 @@ The cancellation policy for this product.
 | Name                  | Type   | Required | Description                                                      |
 | :-------------------- | :----- | :------- | :--------------------------------------------------------------- |
 | freeCancellationUntil | string | ❌       | Until when the order for this product can be cancelled for free. |
-| type\_                | Type\_ | ❌       | The cancellation scheme supported by this product.               |
+| type                  | Type\_ | ❌       | The cancellation scheme supported by this product.               |
 
 # Type\_
 

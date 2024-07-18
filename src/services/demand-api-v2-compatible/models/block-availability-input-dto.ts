@@ -8,21 +8,23 @@ import { blockAvailabilityInputDtoUserPlatform } from './block-availability-inpu
 /**
  * The shape of the model inside the application code - what the users use
  */
-export const blockAvailabilityInputDto = z.object({
-  hotelIds: z.array(z.number()),
-  checkin: z.string(),
-  checkout: z.string(),
-  guestCc: z.string(),
-  currency: z.string().optional(),
-  extras: z.array(blockAvailabilityInputDtoExtras).optional(),
-  affiliateId: z.string().optional(),
-  blockIds: z.array(z.string()).optional(),
-  guestIp: z.string().optional(),
-  guestQty: z.array(z.number()).optional(),
-  language: blockAvailabilityInputDtoLanguage.optional(),
-  numRooms: z.number().optional(),
-  room1: z.array(z.string()).optional(),
-  userPlatform: blockAvailabilityInputDtoUserPlatform.optional(),
+export const blockAvailabilityInputDto: any = z.lazy(() => {
+  return z.object({
+    hotelIds: z.array(z.number()),
+    checkin: z.string(),
+    checkout: z.string(),
+    guestCc: z.string(),
+    currency: z.string().optional(),
+    extras: z.array(blockAvailabilityInputDtoExtras).optional(),
+    affiliateId: z.string().optional(),
+    blockIds: z.array(z.string()).optional(),
+    guestIp: z.string().optional(),
+    guestQty: z.array(z.number()).optional(),
+    language: blockAvailabilityInputDtoLanguage.optional(),
+    numRooms: z.number().optional(),
+    room1: z.array(z.string()).optional(),
+    userPlatform: blockAvailabilityInputDtoUserPlatform.optional(),
+  });
 });
 
 /**
@@ -66,74 +68,78 @@ export type BlockAvailabilityInputDto = z.infer<typeof blockAvailabilityInputDto
  * The shape of the model mapping from the api schema into the application shape.
  * Is equal to application shape if all property names match the api schema
  */
-export const blockAvailabilityInputDtoResponse = z
-  .object({
-    hotel_ids: z.array(z.number()),
-    checkin: z.string(),
-    checkout: z.string(),
-    guest_cc: z.string(),
-    currency: z.string().optional(),
-    extras: z.array(blockAvailabilityInputDtoExtras).optional(),
-    affiliate_id: z.string().optional(),
-    block_ids: z.array(z.string()).optional(),
-    guest_ip: z.string().optional(),
-    guest_qty: z.array(z.number()).optional(),
-    language: blockAvailabilityInputDtoLanguage.optional(),
-    num_rooms: z.number().optional(),
-    room1: z.array(z.string()).optional(),
-    user_platform: blockAvailabilityInputDtoUserPlatform.optional(),
-  })
-  .transform((data) => ({
-    hotelIds: data['hotel_ids'],
-    checkin: data['checkin'],
-    checkout: data['checkout'],
-    guestCc: data['guest_cc'],
-    currency: data['currency'],
-    extras: data['extras'],
-    affiliateId: data['affiliate_id'],
-    blockIds: data['block_ids'],
-    guestIp: data['guest_ip'],
-    guestQty: data['guest_qty'],
-    language: data['language'],
-    numRooms: data['num_rooms'],
-    room1: data['room1'],
-    userPlatform: data['user_platform'],
-  }));
+export const blockAvailabilityInputDtoResponse: any = z.lazy(() => {
+  return z
+    .object({
+      hotel_ids: z.array(z.number()),
+      checkin: z.string(),
+      checkout: z.string(),
+      guest_cc: z.string(),
+      currency: z.string().optional(),
+      extras: z.array(blockAvailabilityInputDtoExtras).optional(),
+      affiliate_id: z.string().optional(),
+      block_ids: z.array(z.string()).optional(),
+      guest_ip: z.string().optional(),
+      guest_qty: z.array(z.number()).optional(),
+      language: blockAvailabilityInputDtoLanguage.optional(),
+      num_rooms: z.number().optional(),
+      room1: z.array(z.string()).optional(),
+      user_platform: blockAvailabilityInputDtoUserPlatform.optional(),
+    })
+    .transform((data) => ({
+      hotelIds: data['hotel_ids'],
+      checkin: data['checkin'],
+      checkout: data['checkout'],
+      guestCc: data['guest_cc'],
+      currency: data['currency'],
+      extras: data['extras'],
+      affiliateId: data['affiliate_id'],
+      blockIds: data['block_ids'],
+      guestIp: data['guest_ip'],
+      guestQty: data['guest_qty'],
+      language: data['language'],
+      numRooms: data['num_rooms'],
+      room1: data['room1'],
+      userPlatform: data['user_platform'],
+    }));
+});
 
 /**
  * The shape of the model mapping from the application shape into the api schema.
  * Is equal to application shape if all property names match the api schema
  */
-export const blockAvailabilityInputDtoRequest = z
-  .object({
-    hotelIds: z.array(z.number()).nullish(),
-    checkin: z.string().nullish(),
-    checkout: z.string().nullish(),
-    guestCc: z.string().nullish(),
-    currency: z.string().nullish(),
-    extras: z.array(blockAvailabilityInputDtoExtras).nullish(),
-    affiliateId: z.string().nullish(),
-    blockIds: z.array(z.string()).nullish(),
-    guestIp: z.string().nullish(),
-    guestQty: z.array(z.number()).nullish(),
-    language: blockAvailabilityInputDtoLanguage.nullish(),
-    numRooms: z.number().nullish(),
-    room1: z.array(z.string()).nullish(),
-    userPlatform: blockAvailabilityInputDtoUserPlatform.nullish(),
-  })
-  .transform((data) => ({
-    hotel_ids: data['hotelIds'],
-    checkin: data['checkin'],
-    checkout: data['checkout'],
-    guest_cc: data['guestCc'],
-    currency: data['currency'],
-    extras: data['extras'],
-    affiliate_id: data['affiliateId'],
-    block_ids: data['blockIds'],
-    guest_ip: data['guestIp'],
-    guest_qty: data['guestQty'],
-    language: data['language'],
-    num_rooms: data['numRooms'],
-    room1: data['room1'],
-    user_platform: data['userPlatform'],
-  }));
+export const blockAvailabilityInputDtoRequest: any = z.lazy(() => {
+  return z
+    .object({
+      hotelIds: z.array(z.number()).nullish(),
+      checkin: z.string().nullish(),
+      checkout: z.string().nullish(),
+      guestCc: z.string().nullish(),
+      currency: z.string().nullish(),
+      extras: z.array(blockAvailabilityInputDtoExtras).nullish(),
+      affiliateId: z.string().nullish(),
+      blockIds: z.array(z.string()).nullish(),
+      guestIp: z.string().nullish(),
+      guestQty: z.array(z.number()).nullish(),
+      language: blockAvailabilityInputDtoLanguage.nullish(),
+      numRooms: z.number().nullish(),
+      room1: z.array(z.string()).nullish(),
+      userPlatform: blockAvailabilityInputDtoUserPlatform.nullish(),
+    })
+    .transform((data) => ({
+      hotel_ids: data['hotelIds'],
+      checkin: data['checkin'],
+      checkout: data['checkout'],
+      guest_cc: data['guestCc'],
+      currency: data['currency'],
+      extras: data['extras'],
+      affiliate_id: data['affiliateId'],
+      block_ids: data['blockIds'],
+      guest_ip: data['guestIp'],
+      guest_qty: data['guestQty'],
+      language: data['language'],
+      num_rooms: data['numRooms'],
+      room1: data['room1'],
+      user_platform: data['userPlatform'],
+    }));
+});

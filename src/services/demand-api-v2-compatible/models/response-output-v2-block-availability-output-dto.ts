@@ -11,9 +11,11 @@ import {
 /**
  * The shape of the model inside the application code - what the users use
  */
-export const responseOutputV2BlockAvailabilityOutputDto = z.object({
-  meta: meta.optional(),
-  result: z.array(blockAvailabilityOutputDto).optional(),
+export const responseOutputV2BlockAvailabilityOutputDto: any = z.lazy(() => {
+  return z.object({
+    meta: meta.optional(),
+    result: z.array(blockAvailabilityOutputDto).optional(),
+  });
 });
 
 /**
@@ -28,23 +30,27 @@ export type ResponseOutputV2BlockAvailabilityOutputDto = z.infer<typeof response
  * The shape of the model mapping from the api schema into the application shape.
  * Is equal to application shape if all property names match the api schema
  */
-export const responseOutputV2BlockAvailabilityOutputDtoResponse = z
-  .object({
-    meta: metaResponse.optional(),
-    result: z.array(blockAvailabilityOutputDtoResponse).optional(),
-  })
-  .transform((data) => ({
-    meta: data['meta'],
-    result: data['result'],
-  }));
+export const responseOutputV2BlockAvailabilityOutputDtoResponse: any = z.lazy(() => {
+  return z
+    .object({
+      meta: metaResponse.optional(),
+      result: z.array(blockAvailabilityOutputDtoResponse).optional(),
+    })
+    .transform((data) => ({
+      meta: data['meta'],
+      result: data['result'],
+    }));
+});
 
 /**
  * The shape of the model mapping from the application shape into the api schema.
  * Is equal to application shape if all property names match the api schema
  */
-export const responseOutputV2BlockAvailabilityOutputDtoRequest = z
-  .object({ meta: metaRequest.nullish(), result: z.array(blockAvailabilityOutputDtoRequest).nullish() })
-  .transform((data) => ({
-    meta: data['meta'],
-    result: data['result'],
-  }));
+export const responseOutputV2BlockAvailabilityOutputDtoRequest: any = z.lazy(() => {
+  return z
+    .object({ meta: metaRequest.nullish(), result: z.array(blockAvailabilityOutputDtoRequest).nullish() })
+    .transform((data) => ({
+      meta: data['meta'],
+      result: data['result'],
+    }));
+});

@@ -6,10 +6,12 @@ import { tags } from './tags';
 /**
  * The shape of the model inside the application code - what the users use
  */
-export const dealDto = z.object({
-  discountPercentage: z.number().optional(),
-  publicPrice: z.number().optional(),
-  tags: z.array(tags).optional(),
+export const dealDto: any = z.lazy(() => {
+  return z.object({
+    discountPercentage: z.number().optional(),
+    publicPrice: z.number().optional(),
+    tags: z.array(tags).optional(),
+  });
 });
 
 /**
@@ -25,30 +27,34 @@ export type DealDto = z.infer<typeof dealDto>;
  * The shape of the model mapping from the api schema into the application shape.
  * Is equal to application shape if all property names match the api schema
  */
-export const dealDtoResponse = z
-  .object({
-    discount_percentage: z.number().optional(),
-    public_price: z.number().optional(),
-    tags: z.array(tags).optional(),
-  })
-  .transform((data) => ({
-    discountPercentage: data['discount_percentage'],
-    publicPrice: data['public_price'],
-    tags: data['tags'],
-  }));
+export const dealDtoResponse: any = z.lazy(() => {
+  return z
+    .object({
+      discount_percentage: z.number().optional(),
+      public_price: z.number().optional(),
+      tags: z.array(tags).optional(),
+    })
+    .transform((data) => ({
+      discountPercentage: data['discount_percentage'],
+      publicPrice: data['public_price'],
+      tags: data['tags'],
+    }));
+});
 
 /**
  * The shape of the model mapping from the application shape into the api schema.
  * Is equal to application shape if all property names match the api schema
  */
-export const dealDtoRequest = z
-  .object({
-    discountPercentage: z.number().nullish(),
-    publicPrice: z.number().nullish(),
-    tags: z.array(tags).nullish(),
-  })
-  .transform((data) => ({
-    discount_percentage: data['discountPercentage'],
-    public_price: data['publicPrice'],
-    tags: data['tags'],
-  }));
+export const dealDtoRequest: any = z.lazy(() => {
+  return z
+    .object({
+      discountPercentage: z.number().nullish(),
+      publicPrice: z.number().nullish(),
+      tags: z.array(tags).nullish(),
+    })
+    .transform((data) => ({
+      discount_percentage: data['discountPercentage'],
+      public_price: data['publicPrice'],
+      tags: data['tags'],
+    }));
+});

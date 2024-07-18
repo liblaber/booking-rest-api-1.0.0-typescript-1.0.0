@@ -1,6 +1,6 @@
-# Booking TypeScript SDK 1.0.0
+# BookingClient TypeScript SDK 1.0.0
 
-Welcome to the Booking SDK documentation. This guide will help you get started with integrating and using the Booking SDK in your project.
+Welcome to the BookingClient SDK documentation. This guide will help you get started with integrating and using the BookingClient SDK in your project.
 
 ## Versions
 
@@ -34,14 +34,14 @@ This SDK is compatible with the following versions: `TypeScript >= 4.8.4`
 To get started with the SDK, we recommend installing using `npm`:
 
 ```bash
-npm install booking
+npm install booking_client
 ```
 
 ## Authentication
 
 ### Access Token Authentication
 
-The Booking API uses an Access Token for authentication.
+The BookingClient API uses an Access Token for authentication.
 
 This token must be provided to authenticate your requests to the API.
 
@@ -50,32 +50,32 @@ This token must be provided to authenticate your requests to the API.
 When you initialize the SDK, you can set the access token as follows:
 
 ```ts
-const sdk = new Booking({ token: 'YOUR_TOKEN' });
+const sdk = new BookingClient({ token: 'YOUR_TOKEN' });
 ```
 
 If you need to set or update the access token after initializing the SDK, you can use:
 
 ```ts
-const sdk = new Booking();
+const sdk = new BookingClient();
 sdk.token = 'YOUR_TOKEN';
 ```
 
 ### API Key Authentication
 
-The Booking API uses API keys as a form of authentication. An API key is a unique identifier used to authenticate a user, developer, or a program that is calling the API.
+The BookingClient API uses API keys as a form of authentication. An API key is a unique identifier used to authenticate a user, developer, or a program that is calling the API.
 
 #### Setting the API key
 
 When you initialize the SDK, you can set the API key as follows:
 
 ```ts
-const sdk = new Booking({ apiKey: 'YOUR_API_KEY' });
+const sdk = new BookingClient({ apiKey: 'YOUR_API_KEY' });
 ```
 
 If you need to set or update the API key after initializing the SDK, you can use:
 
 ```ts
-const sdk = new Booking();
+const sdk = new BookingClient();
 sdk.apiKey = 'YOUR_API_KEY';
 ```
 

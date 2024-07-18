@@ -2,24 +2,19 @@
 
 import { ZodType } from 'zod';
 import { Environment } from './environment';
+import { Request } from './transport/request';
 
 export type HttpMethod = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
 
 export interface SdkConfig {
   baseUrl?: string;
   environment?: Environment;
+  timeout?: number;
   token?: string;
   apiKey?: string;
   apiKeyHeader?: string;
   retry?: RetryOptions;
-}
-
-export interface HttpRequest<T> extends Options<T> {
-  method: HttpMethod;
-  url: string;
-  headers?: Record<string, string>;
-  retry: Required<RetryOptions>;
-  config: SdkConfig;
+  validation?: ValidationOptions;
 }
 
 export interface HttpMetadata {
@@ -37,7 +32,7 @@ export interface HttpResponse<T> {
 export interface RequestHandler {
   next?: RequestHandler;
 
-  handle<T>(request: HttpRequest<T>): Promise<HttpResponse<T>>;
+  handle<T>(request: Request<T>): Promise<HttpResponse<T>>;
 }
 
 export enum ContentType {
@@ -65,9 +60,14 @@ export interface Options<T> {
 
 export interface RequestConfig {
   retry?: RetryOptions;
+  validation?: ValidationOptions;
 }
 
 export interface RetryOptions {
   attempts: number;
   delayMs?: number;
+}
+
+export interface ValidationOptions {
+  responseValidation?: boolean;
 }

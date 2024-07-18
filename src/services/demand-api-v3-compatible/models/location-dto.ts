@@ -11,14 +11,16 @@ import { coordinatesDto, coordinatesDtoRequest, coordinatesDtoResponse } from '.
 /**
  * The shape of the model inside the application code - what the users use
  */
-export const locationDto = z.object({
-  address: lazyTranslatedString.optional(),
-  city: z.number().optional(),
-  coordinates: coordinatesDto.optional(),
-  country: z.string().optional(),
-  districts: z.array(z.number()).optional(),
-  postalCode: z.string().optional(),
-  regions: z.array(z.number()).optional(),
+export const locationDto: any = z.lazy(() => {
+  return z.object({
+    address: lazyTranslatedString.optional(),
+    city: z.number().optional(),
+    coordinates: coordinatesDto.optional(),
+    country: z.string().optional(),
+    districts: z.array(z.number()).optional(),
+    postalCode: z.string().optional(),
+    regions: z.array(z.number()).optional(),
+  });
 });
 
 /**
@@ -44,46 +46,50 @@ export type LocationDto = z.infer<typeof locationDto>;
  * The shape of the model mapping from the api schema into the application shape.
  * Is equal to application shape if all property names match the api schema
  */
-export const locationDtoResponse = z
-  .object({
-    address: lazyTranslatedStringResponse.optional(),
-    city: z.number().optional(),
-    coordinates: coordinatesDtoResponse.optional(),
-    country: z.string().optional(),
-    districts: z.array(z.number()).optional(),
-    postal_code: z.string().optional(),
-    regions: z.array(z.number()).optional(),
-  })
-  .transform((data) => ({
-    address: data['address'],
-    city: data['city'],
-    coordinates: data['coordinates'],
-    country: data['country'],
-    districts: data['districts'],
-    postalCode: data['postal_code'],
-    regions: data['regions'],
-  }));
+export const locationDtoResponse: any = z.lazy(() => {
+  return z
+    .object({
+      address: lazyTranslatedStringResponse.optional(),
+      city: z.number().optional(),
+      coordinates: coordinatesDtoResponse.optional(),
+      country: z.string().optional(),
+      districts: z.array(z.number()).optional(),
+      postal_code: z.string().optional(),
+      regions: z.array(z.number()).optional(),
+    })
+    .transform((data) => ({
+      address: data['address'],
+      city: data['city'],
+      coordinates: data['coordinates'],
+      country: data['country'],
+      districts: data['districts'],
+      postalCode: data['postal_code'],
+      regions: data['regions'],
+    }));
+});
 
 /**
  * The shape of the model mapping from the application shape into the api schema.
  * Is equal to application shape if all property names match the api schema
  */
-export const locationDtoRequest = z
-  .object({
-    address: lazyTranslatedStringRequest.nullish(),
-    city: z.number().nullish(),
-    coordinates: coordinatesDtoRequest.nullish(),
-    country: z.string().nullish(),
-    districts: z.array(z.number()).nullish(),
-    postalCode: z.string().nullish(),
-    regions: z.array(z.number()).nullish(),
-  })
-  .transform((data) => ({
-    address: data['address'],
-    city: data['city'],
-    coordinates: data['coordinates'],
-    country: data['country'],
-    districts: data['districts'],
-    postal_code: data['postalCode'],
-    regions: data['regions'],
-  }));
+export const locationDtoRequest: any = z.lazy(() => {
+  return z
+    .object({
+      address: lazyTranslatedStringRequest.nullish(),
+      city: z.number().nullish(),
+      coordinates: coordinatesDtoRequest.nullish(),
+      country: z.string().nullish(),
+      districts: z.array(z.number()).nullish(),
+      postalCode: z.string().nullish(),
+      regions: z.array(z.number()).nullish(),
+    })
+    .transform((data) => ({
+      address: data['address'],
+      city: data['city'],
+      coordinates: data['coordinates'],
+      country: data['country'],
+      districts: data['districts'],
+      postal_code: data['postalCode'],
+      regions: data['regions'],
+    }));
+});

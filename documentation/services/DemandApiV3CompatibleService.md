@@ -29,10 +29,10 @@ This endpoint returns the cheapest available product for each hotel matching the
 **Example Usage Code Snippet**
 
 ```typescript
-import { BookerInputDto, Booking, Coordinates, GuestsInputDto, SearchInputDto } from 'booking';
+import { BookerInputDto, BookingClient, Coordinates, GuestsInputDto, SearchInputDto } from 'booking_client';
 
 (async () => {
-  const booking = new Booking({
+  const bookingClient = new BookingClient({
     token: 'YOUR_TOKEN',
   });
 
@@ -45,30 +45,30 @@ import { BookerInputDto, Booking, Coordinates, GuestsInputDto, SearchInputDto } 
   const userGroups = UserGroups.AUTHENTICATED;
 
   const bookerInputDto: BookerInputDto = {
-    country: 're',
+    country: 'gv',
     platform: platform,
     travelPurpose: travelPurpose,
     userGroups: [userGroups],
   };
 
   const allocationInputDto: AllocationInputDto = {
-    children: [5],
-    numberOfAdults: 9,
+    children: [11],
+    numberOfAdults: 7,
   };
 
   const guestsInputDto: GuestsInputDto = {
-    numberOfAdults: 4,
-    numberOfRooms: 8,
+    numberOfAdults: 2,
+    numberOfRooms: 3,
     allocation: [allocationInputDto],
-    children: [16],
+    children: [3],
   };
 
   const searchInputDtoExtras = SearchInputDtoExtras.EXTRA_CHARGES;
 
   const coordinates: Coordinates = {
-    latitude: 4.04,
-    longitude: 5.18,
-    radius: 7.55,
+    latitude: 7.91,
+    longitude: 8.76,
+    radius: 4.68,
   };
 
   const input: SearchInputDto = {
@@ -76,25 +76,25 @@ import { BookerInputDto, Booking, Coordinates, GuestsInputDto, SearchInputDto } 
     checkout: 'checkout',
     booker: bookerInputDto,
     currency: 'EUR',
-    city: 6,
+    city: 8,
     country: 'nl',
     guests: guestsInputDto,
     extras: [searchInputDtoExtras],
-    accommodations: [9],
-    accommodationFacilities: [4],
-    roomFacilities: [6],
-    accommodationTypes: [5],
-    brands: [5],
+    accommodations: [2],
+    accommodationFacilities: [8],
+    roomFacilities: [1],
+    accommodationTypes: [3],
+    brands: [8],
     airport: 'AMS',
-    district: 8,
-    landmark: 8,
+    district: 4,
+    landmark: 7,
     coordinates: coordinates,
-    region: 4,
-    rows: 294,
+    region: 9,
+    rows: 875,
     page: 'page',
   };
 
-  const { data } = await booking.demandApiV3Compatible.search(input, {
+  const { data } = await bookingClient.demandApiV3Compatible.search(input, {
     accept: accept,
   });
 
@@ -123,10 +123,10 @@ This endpoint returns detailed information on all accommodation properties match
 **Example Usage Code Snippet**
 
 ```typescript
-import { Booking, DetailsInputDto } from 'booking';
+import { BookingClient, DetailsInputDto } from 'booking_client';
 
 (async () => {
-  const booking = new Booking({
+  const bookingClient = new BookingClient({
     token: 'YOUR_TOKEN',
   });
 
@@ -137,21 +137,21 @@ import { Booking, DetailsInputDto } from 'booking';
   const detailsInputDtoLanguages = DetailsInputDtoLanguages.AR;
 
   const input: DetailsInputDto = {
-    accommodations: [1],
-    accommodationFacilities: [3],
+    accommodations: [3],
+    accommodationFacilities: [1],
     accommodationTypes: [5],
     airport: 'AMS',
-    brands: [9],
-    city: 9,
+    brands: [4],
+    city: 2,
     country: 'nl',
-    region: 10,
+    region: 2,
     extras: [detailsInputDtoExtras],
     languages: [detailsInputDtoLanguages],
-    rows: 857,
+    rows: 606,
     page: 'page',
   };
 
-  const { data } = await booking.demandApiV3Compatible.postDetails(input, {
+  const { data } = await bookingClient.demandApiV3Compatible.postDetails(input, {
     accept: accept,
   });
 
@@ -180,10 +180,10 @@ This endpoint enumerates the internal codes and names, in the selected languages
 **Example Usage Code Snippet**
 
 ```typescript
-import { Booking, ConstantInputDto } from 'booking';
+import { BookingClient, ConstantInputDto } from 'booking_client';
 
 (async () => {
-  const booking = new Booking({
+  const bookingClient = new BookingClient({
     token: 'YOUR_TOKEN',
   });
 
@@ -198,7 +198,7 @@ import { Booking, ConstantInputDto } from 'booking';
     languages: [constantInputDtoLanguages],
   };
 
-  const { data } = await booking.demandApiV3Compatible.getAccommodationConstants(input, {
+  const { data } = await bookingClient.demandApiV3Compatible.getAccommodationConstants(input, {
     accept: accept,
   });
 

@@ -5,7 +5,7 @@ import { SdkConfig } from './http/types';
 import { DemandApiV3CompatibleService } from './services/demand-api-v3-compatible';
 import { DemandApiV2CompatibleService } from './services/demand-api-v2-compatible';
 
-export class Booking {
+export class BookingClient {
   public readonly demandApiV3Compatible: DemandApiV3CompatibleService;
 
   public readonly demandApiV2Compatible: DemandApiV2CompatibleService;
@@ -29,6 +29,11 @@ export class Booking {
   set environment(environment: Environment) {
     this.demandApiV3Compatible.baseUrl = environment;
     this.demandApiV2Compatible.baseUrl = environment;
+  }
+
+  set timeout(timeout: number) {
+    this.demandApiV3Compatible.timeout = timeout;
+    this.demandApiV2Compatible.timeout = timeout;
   }
 
   set token(token: string) {
