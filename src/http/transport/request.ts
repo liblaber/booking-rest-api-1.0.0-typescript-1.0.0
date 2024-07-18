@@ -54,18 +54,30 @@ export class Request<T> {
   }
 
   addHeaderParam(key: string, value: unknown): void {
+    if (value === undefined) {
+      return;
+    }
     this.headers.set(key, value);
   }
 
   addQueryParam(key: string, value: unknown): void {
+    if (value === undefined) {
+      return;
+    }
     this.queryParams.set(key, value);
   }
 
   addPathParam(key: string, value: unknown): void {
+    if (value === undefined) {
+      return;
+    }
     this.pathParams.set(key, value);
   }
 
   addBody(body: any): void {
+    if (body === undefined) {
+      return;
+    }
     this.body = body;
   }
 
@@ -118,7 +130,7 @@ export class Request<T> {
   }
 
   private applyResponseValidation(requestConfig: RequestConfig | undefined): boolean {
-    if (requestConfig?.validation.responseValidation !== undefined) {
+    if (requestConfig?.validation?.responseValidation !== undefined) {
       return requestConfig?.validation.responseValidation;
     }
     if (this.config?.validation?.responseValidation !== undefined) {

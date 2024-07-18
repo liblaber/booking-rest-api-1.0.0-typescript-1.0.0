@@ -45,7 +45,7 @@ const reviewerType = ReviewerType.SOLO_TRAVELLER;
 
 const reviewScoresInputDto: ReviewScoresInputDto = {
   hotelIds: [4],
-  affiliateId: 6,
+  affiliateId: 4,
   language: reviewScoresInputDtoLanguage,
   reviewerType: reviewerType
 };
@@ -94,11 +94,11 @@ import { BookingClient } from 'booking_client';
 const hotelsInputDtoExtras = HotelsInputDtoExtras.HOTEL_INFO;
 
 const hotelsInput: HotelsInputDto = {
-  hotelIds: [6],
+  hotelIds: [10],
   language: hotelsInputDtoLanguage,
   extras: [hotelsInputDtoExtras],
-  offset: 4,
-  rows: 9
+  offset: 5,
+  rows: 10
 };
 const accept = GetHotelsAccept.application/json, application/xml;
 
@@ -144,10 +144,10 @@ import { BookingClient } from 'booking_client';
   const hotelTypeInputDtoLanguages = HotelTypeInputDtoLanguages.AR;
 
   const hotelTypeInputDto: HotelTypeInputDto = {
-    hotelTypeIds: [5],
+    hotelTypeIds: [8],
     languages: [hotelTypeInputDtoLanguages],
-    offset: 2,
-    row: 9,
+    offset: 123,
+    row: 3,
   };
   const accept = GetHotelTypesAccept.application / json;
 
@@ -189,9 +189,9 @@ import { BookingClient } from 'booking_client';
   });
 
   const hotelThemeTypeInputDto: HotelThemeTypeInputDto = {
-    themeIds: [9],
-    offset: 7,
-    row: 1,
+    themeIds: [5],
+    offset: 2,
+    row: 2,
   };
   const accept = GetHotelThemeTypesAccept.application / json;
 
@@ -235,8 +235,8 @@ import { BookingClient } from 'booking_client';
   const hotelFacilityInputDtoLanguages = HotelFacilityInputDtoLanguages.AR;
 
   const hotelFacilityInputDto: HotelFacilityInputDto = {
-    facilityTypeIds: [1],
-    hotelFacilityTypeIds: [7],
+    facilityTypeIds: [6],
+    hotelFacilityTypeIds: [9],
     languages: [hotelFacilityInputDtoLanguages],
   };
   const accept = GetRoomFacilityTypesAccept.application / json;
@@ -286,9 +286,9 @@ import { BookingClient } from 'booking_client';
     hotelIds: [123],
     currency: 'currency',
     guestCountry: 'guest_country',
-    noRooms: 7,
+    noRooms: 10,
     userPlatform: hotelAvailabilityInputDtoUserPlatform,
-    rows: 575,
+    rows: 147,
     page: 'page',
   };
   const accept = GetHotelAvailabilityAccept.application / json;
@@ -336,7 +336,7 @@ const blockAvailabilityInputDtoLanguage = BlockAvailabilityInputDtoLanguage.AR;
 const blockAvailabilityInputDtoUserPlatform = BlockAvailabilityInputDtoUserPlatform.ANDROID;
 
 const blockInput: BlockAvailabilityInputDto = {
-  hotelIds: [6],
+  hotelIds: [2],
   checkin: "checkin",
   checkout: "checkout",
   guestCc: "guest_cc",

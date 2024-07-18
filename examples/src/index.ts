@@ -14,30 +14,30 @@ import { BookerInputDto, BookingClient, Coordinates, GuestsInputDto, SearchInput
   const userGroups = UserGroups.AUTHENTICATED;
 
   const bookerInputDto: BookerInputDto = {
-    country: 'gv',
+    country: 'bs',
     platform: platform,
     travelPurpose: travelPurpose,
     userGroups: [userGroups],
   };
 
   const allocationInputDto: AllocationInputDto = {
-    children: [11],
-    numberOfAdults: 7,
+    children: [3],
+    numberOfAdults: 10,
   };
 
   const guestsInputDto: GuestsInputDto = {
-    numberOfAdults: 2,
-    numberOfRooms: 3,
+    numberOfAdults: 1,
+    numberOfRooms: 8,
     allocation: [allocationInputDto],
-    children: [3],
+    children: [14],
   };
 
   const searchInputDtoExtras = SearchInputDtoExtras.EXTRA_CHARGES;
 
   const coordinates: Coordinates = {
-    latitude: 7.91,
-    longitude: 8.76,
-    radius: 4.68,
+    latitude: 6.5,
+    longitude: 1.32,
+    radius: 7.15,
   };
 
   const input: SearchInputDto = {
@@ -45,21 +45,21 @@ import { BookerInputDto, BookingClient, Coordinates, GuestsInputDto, SearchInput
     checkout: 'checkout',
     booker: bookerInputDto,
     currency: 'EUR',
-    city: 8,
+    city: 10,
     country: 'nl',
     guests: guestsInputDto,
     extras: [searchInputDtoExtras],
-    accommodations: [2],
-    accommodationFacilities: [8],
-    roomFacilities: [1],
-    accommodationTypes: [3],
-    brands: [8],
+    accommodations: [7],
+    accommodationFacilities: [7],
+    roomFacilities: [8],
+    accommodationTypes: [6],
+    brands: [10],
     airport: 'AMS',
-    district: 4,
-    landmark: 7,
+    district: 2,
+    landmark: 10,
     coordinates: coordinates,
     region: 9,
-    rows: 875,
+    rows: 211,
     page: 'page',
   };
 
